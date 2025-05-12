@@ -28,21 +28,21 @@ const WeatherList = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(e.target.topic.value)
-    setCity(e.target.topic.value) // Modificando el estado de Value
+    console.log(e.target.city.value)
+    setCity(e.target.city.value) 
   };
 
-  return <section className="topic">
+  return <section className="city-section">
   <h1>Weather list</h1>
   <form onSubmit={handleSubmit}>
-    <input name="weather-input"/>
+    <input name="city"/>
     <button>Buscar</button>
   </form>
 
   {weatherListItem.length!==0?
                     <ul className='topics'>
-                      {weatherListItem.map(post => (
-                        <li key={post.id}>{post.title}</li>
+                      {weatherListItem.map(city => (
+                        <li key={city.temp}></li>
                       ))}
                     </ul>
                     :""
