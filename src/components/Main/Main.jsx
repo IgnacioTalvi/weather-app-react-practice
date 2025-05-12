@@ -1,7 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
+import weatherData from "./weatherData.js"
+import axios from 'axios';
 
-const Main = () => {
+
+const WeatherList = () => {
+
+  const [weatherListItem, setWeatherListItem] = useState(weatherData);
+  
   return <div>Main</div>;
 };
 
-export default Main;
+export default WeatherList;
