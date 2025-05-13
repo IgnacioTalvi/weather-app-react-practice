@@ -2,7 +2,6 @@ import React, {useState, useEffect} from "react";
 import axios from 'axios';
 const apiKey = import.meta.env.VITE_API_KEY;
 
-
 const WeatherList = () => {
 
   const [city, setCity] = useState("Madrid");
@@ -16,7 +15,7 @@ const WeatherList = () => {
         const json = res.data;
 
         // Guarda en el array de datos el resultado. Procesa los datos
-        setWeatherListItem(res.data.list.map(c => c.main.temp));
+        setWeatherListItem(res.data.list.filter(c => c.main.temp));
       }catch(e){
         setWeatherListItem([]) // No pintes nada 
       }
@@ -41,8 +40,10 @@ const WeatherList = () => {
 
   {weatherListItem.length!==0?
                     <ul className='topics'>
-                      {weatherListItem.map(city => (
-                        <li key={city.temp}></li>
+                      {weatherListItem.map(item => (
+                        <li key={item.dt}>
+                        {new Date(item.dt_txt).toLocaleString()} - {(item.main.temp - 273.15).toFixed(1)}°C
+                      </li>
                       ))}
                     </ul>
                     :""
