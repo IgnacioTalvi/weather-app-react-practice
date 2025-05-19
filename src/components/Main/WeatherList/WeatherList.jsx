@@ -14,7 +14,7 @@ const WeatherList = () => {
       async function fetchData() {
          try{
        // Petición HTTP
-          const res = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`);
+          const res = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`);
           const json = await res.data.list;
         
           // Guarda en el array de posts el resultado. Procesa los datos
@@ -27,7 +27,7 @@ const WeatherList = () => {
   
   const paintData = () =>
     weatherListItem.map((item, index) => (
-      <WeatherCard key={index} data={item} remove={() => removeItem(index)} />
+      <WeatherCard key={index} data={item} />
     ));
 
 
